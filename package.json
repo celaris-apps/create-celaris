@@ -1,0 +1,40 @@
+{
+  "name": "create-celaris",
+  "version": "0.1.0",
+  "description": "A rapid scaffolding tool for Celaris",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "create-celaris": "./index.js"
+  },
+  "dependencies": {
+    "cmake-js": "^7.3.0",
+    "commander": "^12.1.0",
+    "degit": "^2.8.4",
+    "fs-extra": "^11.2.0",
+    "inquirer": "^10.2.2",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "wait-on": "^8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/celaris-apps/create-celaris.git"
+  },
+  "keywords": [
+    "celaris",
+    "cli",
+    "development"
+  ],
+  "author": "Celaris",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/celaris-apps/create-celaris/issues"
+  },
+  "homepage": "https://celaris.cc"
+}
