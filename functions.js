@@ -20,7 +20,6 @@ const tempDir = 'celaris-src-temp'
  * @returns
  */
 const filterFunc = (src) => {
-  console.log('Filtering:', src)
   return (
     !src.includes(path.join(tempDir, '.git')) &&
     !src.includes(path.join(tempDir, 'README.md')) &&

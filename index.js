@@ -43,6 +43,7 @@ program
     }
     console.log(`npm run celaris dev`)
     console.log("You're all set!")
+    console.log(ascii)
     console.log('Thank you for using Celaris, to learn more, visit https://celaris.cc')
   })
 
