@@ -340,7 +340,7 @@ export async function initialiseCelaris() {
   // Install the dependencies in the current directory
   await runInteractiveCommand('npm install')
 
-  // await runInteractiveCommand('npm', ['install', 'cmake-js'])
+  await runInteractiveCommand('npm', ['install', 'celaris-cli'])
   await runInteractiveCommand('npm', ['install', 'wait-on', 'concurrently', '--save-dev'])
   await runInteractiveCommand('npm', ['run', 'cmakeall'])
 
