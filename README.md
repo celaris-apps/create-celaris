@@ -1,9 +1,9 @@
 
-# Celaris CLI Tool
+# Create Celaris Scaffolding Tool
 
 ## Introduction
 
-Celaris CLI is a command-line interface tool designed to streamline the setup and development process of Celaris projects by automating tasks like project initialization, repository cloning, and dependency management.
+Create Celaris is a scaffolding tool designed to streamline the setup process of Celaris projects by automating the initialization, repository cloning, and dependency management.
 
 ## Prerequisites
 
@@ -15,40 +15,15 @@ Celaris CLI is a command-line interface tool designed to streamline the setup an
 Install the cli:
 
 ```bash
-npm install celaris-cli
-```
-
-## Usage
-
-### Initialising a Project
-
-To initialise a new project, run the `init` command. This command sets up the project by cloning the necessary repositories, setting up the environment, and installing dependencies.
-
-```bash
-npm run celaris init
-```
-
-### Development Mode
-
-To run the project in development mode, use the `dev` command. This command compiles and runs the project, and watches for any changes.
-
-```bash
-npm run celaris dev
-```
-
-You can also run the dev command without running a build command (handy on first run as the init command runs a build and test)
-
-```bash
-npm run celaris -- dev --no-build
+npm create celaris@latest
 ```
 
 ## Features
 
+- **Easy Scaffolding:** Build a Celaris app from a single command.
 - **Framework Selection:** Choose from a list of supported frameworks during initialization.
 - **TypeScript Support:** Option to enable TypeScript configuration.
-- **Interactive Commands:** Run commands interactively with real-time output.
-- **File Filtering:** Exclude specific files or directories during copy operations.
-- **Package.json Management:** Merge and manage package.json dependencies and scripts.
+
 
 ## Contributing
 
