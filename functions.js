@@ -4,6 +4,7 @@ import fs from 'fs-extra'
 import path from 'path'
 import inquirer from 'inquirer'
 import yaml from 'js-yaml'
+import os from 'os'
 
 // Repository to clone and the branch you want to clone
 const repoUrl = 'https://github.com/celaris-apps/celaris-src.git'
@@ -77,7 +78,11 @@ async function fixPackageJson() {
         scripts.ctest = 'ctest --test-dir ./src-celaris/build --config Release'
         scripts.cmakeall = 'npm run cmake && npm run cbuild && npm run ctest'
         scripts.dev = 'vite --port 7832'
-        scripts.execute = 'start ./src-celaris/build/bin/Release/celaris.exe'
+        if (os.platform() === 'win32') {
+          scripts.execute = 'start ./src-celaris/build/bin/Release/celaris.exe'
+        } else {
+          scripts.execute = './src-celaris/build/bin/celaris'
+        }
         scripts.celaris = 'celaris'
 
         // Add the vite scripts to the package.json file
