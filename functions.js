@@ -75,7 +75,7 @@ async function fixPackageJson() {
         scripts.cmake = 'cmake -S . -B ./src-celaris/build'
         scripts.cbuild = 'cmake --build ./src-celaris/build --config Release'
         scripts.cclean = 'cmake --build ./src-celaris/build --target clean'
-        scripts.ctest = 'ctest --test-dir ./src-celaris/build --config Release'
+        scripts.ctest = 'ctest --test-dir ./src-celaris/build -C Release'
         scripts.cmakeall = 'npm run cmake && npm run cbuild && npm run ctest'
         scripts.dev = 'vite --port 7832'
         if (os.platform() === 'win32') {

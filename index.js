@@ -42,7 +42,7 @@ program
       console.log(`cd ${targetDir}`)
     }
     console.log(ascii)
-    console.log(`run cd ${targetDir}`)
+    console.log(`run cd ${directory}`)
     console.log(`npm run celaris -- dev --no-build (a build is not required for the first run)`)
     console.log('Thank you for using Celaris, to learn more, visit https://celaris.cc')
   })
