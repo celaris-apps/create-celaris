@@ -86,6 +86,7 @@ async function fixPackageJson() {
         scripts.celaris = 'celaris'
 
         // Add the vite scripts to the package.json file
+        packageObj.type = viteObj.type
         packageObj.scripts = { ...packageObj.scripts, ...scripts }
         packageObj.dependencies = { ...packageObj.dependencies, ...dependencies }
         packageObj.devDependencies = { ...packageObj.devDependencies, ...devDependencies }
