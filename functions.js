@@ -89,11 +89,6 @@ async function fixPackageJson() {
 
         // Add the celaris scripts to the package.json file
         scripts.dev = 'vite --port 7832'
-        if (os.platform() === 'win32') {
-          scripts.execute = 'start ./src-celaris/build/bin/Release/celaris.exe'
-        } else {
-          scripts.execute = './src-celaris/build/bin/celaris'
-        }
         scripts.celaris = 'celaris'
 
         // Add the vite scripts to the package.json file
