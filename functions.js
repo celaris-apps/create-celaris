@@ -45,6 +45,22 @@ async function copyFiltedFiles() {
   }
 }
 
+const runBuildCommands = async (buildCommands) => {
+  for (const command of buildCommands) {
+    console.log(`Running command: ${command.cmd} ${command.args.join(' ')}`)
+    await new Promise((resolve, reject) => {
+      const proc = spawn(command.cmd, command.args, { stdio: 'inherit', shell: true })
+      proc.on('close', (code) => {
+        if (code !== 0) {
+          reject(new Error(`${command.cmd} exited with code ${code}`))
+        } else {
+          resolve()
+        }
+      })
+    })
+  }
+}
+
 /**
  * This function fixes the package.json file
  *
@@ -72,11 +88,6 @@ async function fixPackageJson() {
         let devDependencies = viteObj.devDependencies || {}
 
         // Add the celaris scripts to the package.json file
-        scripts.cmake = 'cmake -S . -B ./src-celaris/build'
-        scripts.cbuild = 'cmake --build ./src-celaris/build --config Release'
-        scripts.cclean = 'cmake --build ./src-celaris/build --target clean'
-        scripts.ctest = 'ctest --test-dir ./src-celaris/build -C Release'
-        scripts.cmakeall = 'npm run cmake && npm run cbuild && npm run ctest'
         scripts.dev = 'vite --port 7832'
         if (os.platform() === 'win32') {
           scripts.execute = 'start ./src-celaris/build/bin/Release/celaris.exe'
@@ -346,8 +357,16 @@ export async function initialiseCelaris() {
   await runInteractiveCommand('npm install')
 
   await runInteractiveCommand('npm', ['install', 'celaris-cli'])
-  await runInteractiveCommand('npm', ['install', 'wait-on', 'concurrently', '--save-dev'])
-  await runInteractiveCommand('npm', ['run', 'cmakeall'])
+  // await runInteractiveCommand('npm', ['install', 'wait-on', 'concurrently', '--save-dev'])
 
+  console.log('building and testing the C++ source...')
+  const buildCommands = []
+  buildCommands.push(
+    { cmd: 'cmake', args: ['-S', '.', '-B', './src-celaris/build'] },
+    { cmd: 'cmake', args: ['--build', './src-celaris/build', '--config', 'Debug'] },
+    { cmd: 'ctest', args: ['--test-dir', './src-celaris/build', '-C', 'Debug'] }
+  )
+
+  await runBuildCommands(buildCommands)
   console.log('Initialisation complete.')
 }
